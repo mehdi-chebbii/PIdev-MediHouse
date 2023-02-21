@@ -38,6 +38,7 @@
 	<div class="main-wrapper">
 
 		<!-- Header -->
+		
 		<div class="header">
 
 			<!-- Logo -->
@@ -46,7 +47,7 @@
 					<img src="assets/img/logo2.png" alt="Logo">
 				</a>
 				<a href="index.html" class="logo logo-small">
-					<img src="assets/img/favicon1.png" alt="Logo" width="30" height="30">
+					<img src="assets/img/favicon1.png" alt="Logo2" width="30" height="30">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -199,7 +200,7 @@
 						<li>
 							<a href="index.html"><i class="fe fe-home"></i> <span>Tableau de bord</span></a>
 						</li>
-						<li class="active">
+						<li>
 							<a href="rendez-vous.html"><i class="fe fe-layout"></i> <span>Rendez-vous</span></a>
 						</li>
 						<li>
@@ -218,7 +219,8 @@
 						<li>
 							<a href="Forum.html"><i class="fe fe-star-o"></i> <span>Forum</span></a>
 						</li>
-						<li>
+						
+                        <li class="active">
 							<a href="reclamation.html"><i class="fe fe-file"></i>
 								<span>Reclamation</span></a>
 						</li>
@@ -306,36 +308,20 @@
 		{%endblock%}
 		<!-- Page Wrapper -->
 		
-		<div class="page-wrapper">
-			<div class="content container-fluid">
-				{%block body%}
-				<!-- Page Header -->
-				<div class="page-header">
-					<div class="row">
-						<div class="col-sm-12">
-							<h3 class="page-title">Appointments</h3>
-							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-								<li class="breadcrumb-item active">Appointments</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- /Page Header -->
+		
 				
 				<div class="row">
 					<div class="col-md-12">
+						{%block body%}
 						
-						
-						
+       {%endblock%}
+						</div>
 					</div>
-					{%endblock%}
-				</div>
-			</div>
-		</div>
+					
+				
 		<!-- /Page Wrapper -->
 		
-	</div>
+	
 	<!-- /Main Wrapper -->
 
 	<!-- jQuery -->
