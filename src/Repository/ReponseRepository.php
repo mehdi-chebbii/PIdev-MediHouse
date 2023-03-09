@@ -38,14 +38,6 @@ class ReponseRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function get_reponse($id)
-    {
-        $entityManager = $this->getEntityManager();
-        $query = $entityManager
-        ->createQuery("SELECT r FROM App\Entity\Reponse r JOIN r.reclamation f  WHERE f.id=:id")
-        ->setParameter('id',$id);
-        return $query->getOneOrNullResult(); 
-    }
 
 //    /**
 //     * @return Reponse[] Returns an array of Reponse objects

@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ReponseRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReponseRepository::class)]
 class Reponse
@@ -13,52 +15,74 @@ class Reponse
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $id_reponse = null;
-
+    #[ORM\ManyToOne]
+    private ?User $id_user = null;
+    /**
+     * @Assert\NotBlank(message="champs obligatoire")
+     */
     #[ORM\Column(length: 255)]
-    private ?string $reponseDes = null;
+    private ?string $reponse = null;
 
-    #[ORM\OneToOne(inversedBy: 'reponse', cascade: ['persist', 'remove'])]
-    private ?Reclamation $reclamation = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_pub = null;
+
+    #[ORM\Column(nullable: true)]
+    public ?int $id_question = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdReponse(): ?int
+    public function __construct()
     {
-        return $this->id_reponse;
+        $this->date_pub = new \DateTime();
     }
 
-    public function setIdReponse(?int $id_reponse): self
+    public function getuser(): ?User
     {
-        $this->id_reponse = $id_reponse;
+        return $this->id_user;
+    }
+
+    public function setuser(?User $user): self
+    {
+        $this->id_user = $user;
 
         return $this;
     }
 
-    public function getReponseDes(): ?string
+    public function getReponse(): ?string
     {
-        return $this->reponseDes;
+        return $this->reponse;
     }
 
-    public function setReponseDes(string $reponseDes): self
+    public function setReponse(string $reponse): self
     {
-        $this->reponseDes = $reponseDes;
+        $this->reponse = $reponse;
 
         return $this;
     }
 
-    public function getReclamation(): ?Reclamation
+    public function getDatePub(): ?\DateTimeInterface
     {
-        return $this->reclamation;
+        return $this->date_pub;
     }
 
-    public function setReclamation(?Reclamation $reclamation): self
+    public function setDatePub(\DateTimeInterface $date_pub): self
     {
-        $this->reclamation = $reclamation;
+        $this->date_pub = $date_pub;
+
+        return $this;
+    }
+
+    public function getIdQuestion(): ?int
+    {
+        return $this->id_question;
+    }
+
+    public function setIdQuestion(int $id_question): self
+    {
+        $this->id_question = $id_question;
 
         return $this;
     }

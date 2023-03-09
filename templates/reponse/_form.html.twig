@@ -1,5 +1,4 @@
-{{ form_start(formClass,{'attr': {'novalidate':'novalidate'}}) }}
-    <!-- Edit Details Modal -->
-{{ form_widget(formClass.descreption) }}
-			<!-- /Edit Details Modal -->
-{{ form_end(formClass) }}
+{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button >{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
