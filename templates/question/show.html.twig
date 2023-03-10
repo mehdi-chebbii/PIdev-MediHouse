@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question{% endblock %}
+
+{% block body %}
+    <h1>Question</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ question.id }}</td>
+            </tr>
+            <tr>
+                <th>Id_user</th>
+                <td>{{ question.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ question.question }}</td>
+            </tr>
+               <tr>
+                <th>Date_pub</th>
+                <td>{{ question.datePub ? question.datePub|date('Y-m-d') : '' }}</td>
+            </tr>
+               <tr>
+                <th>likes</th>
+  {% if question.likes == NULL %}
+
+                <td>0</td> {% else %}
+  <td>{{ question.likes}} <i style="color:#20d420" class="fa fa-thumbs-up"></i></td> {% endif %}            </tr>
+             <tr>
+                <th>dislike</th>
+                {% if question.Dislikes == NULL %}
+
+                <td>0</td> {% else %}
+  <td>{{ question.dislikes}} <i style="color:red"class="fa fa-thumbs-down"></i></td> {% endif %}
+
+            </tr>
+ <tr>
+                 <th>reponse</th>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_user</th>
+                <th>Reponse</th>
+                <th>Date_pub</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+{% if reponse.getidquestion() == question.getid() %}
+
+            <tr>
+                <td>{{ reponse.id }}</td>
+                <td>{{ reponse.idUser }}</td>
+                <td>{{ reponse.reponse }}</td>
+                <td>{{ reponse.datePub ? reponse.datePub|date('Y-m-d') : '' }}</td>
+                <td>
+       <u1 style="text-align: center;">
+ <div class="button-group">
+  <form method="post" action="{{ path('appele', {'id': reponse.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.id) }}">
+    <button class="btn btn-danger delete">Supprimer</button>
+  </form>
+</span>
+</u1>
+                </td>
+            </tr>{% endif %}
+
+        {% else %}
+            <tr>
+                <td colspan="5">pas de question</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>            </tr>
+
+    
+         
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reponse_index') }}">back to list</a>
+
+    <a href="{{ path('app_question_edit', {'id': question.id}) }}">edit</a>
+
+{% endblock %}
