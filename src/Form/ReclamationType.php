@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class ReclamationType extends AbstractType
 {
@@ -14,18 +15,20 @@ class ReclamationType extends AbstractType
     {
         $builder
             ->add('email')
-            
+
             ->add('sujet', ChoiceType::class, [
                 'choices' => [
                     'sujet...' => null,
                     'medcin' => 'medcin',
                     'patient' => 'patient',
                     'Autres' => 'Autres',
-                    ],
+                ],
             ])
-
+            ->add('date_reclamation', DateTimeType::class, [
+                'date_label' => 'date_reclamation',
+            ])
             ->add('descreption')
-            ->add('date_reclamation')
+            //->add('date_reclamation')
         ;
     }
 

@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
-{% block title %}New Reponse{% endblock %}
+{% block title %}New Reponse
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Reponse</h1>
+	<div style="text-align: center;">
+		<h1>ajouter Reponse</h1>
+		{{ include('reponse/_form.html.twig') }}
+		<a href="{{ path('app_question_index') }}">
+			<button>back to list</button>
+		</a>
+	</div>
 
-    {{ include('reponse/_form.html.twig') }}
-
-    <a href="{{ path('app_reponse_index') }}">back to list</a>
 {% endblock %}

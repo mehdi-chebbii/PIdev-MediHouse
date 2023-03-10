@@ -38,6 +38,14 @@ class ReclamationRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function get_reclamation($id)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager
+        ->createQuery("SELECT r FROM App\Entity\Reclamation r JOIN r.reponse f  WHERE f.id=:id")
+        ->setParameter('id',$id);
+        return $query->getOneOrNullResult(); 
+    }
 
 //    /**
 //     * @return Reclamation[] Returns an array of Reclamation objects

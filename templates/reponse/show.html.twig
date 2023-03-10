@@ -12,12 +12,22 @@
                 <td>{{ reponse.id }}</td>
             </tr>
             <tr>
-                <th>Id_reponse</th>
-                <td>{{ reponse.idReponse }}</td>
+                <th>Id_user</th>
+                <td>{{ reponse.idUser }}</td>
             </tr>
             <tr>
-                <th>ReponseDes</th>
-                <td>{{ reponse.reponseDes }}</td>
+                <th>Reponse</th>
+                <td>{{ reponse.reponse }}</td>
+                
+            </tr>
+              <tr>
+                <th>ques</th>
+                <td>{{ reponse.question_id }}</td>
+                
+            </tr>
+            <tr>
+                <th>Date_pub</th>
+                <td>{{ reponse.datePub ? reponse.datePub|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
